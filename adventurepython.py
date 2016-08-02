@@ -39,18 +39,18 @@ while True:
         print("that is not a pickable race.")
         
 while True:
-    cockpit_room(Player)
+    cockpit_room(Player,race)
 
     if answer == ("Engine room"):
-        engine_room(Player)
+        engine_room(Player,race)
         break
     
     elif answer == ("Shield room"):
-        shield_room(Player)
+        shield_room(Player,race)
         break
         
     elif answer == ("Oxygen room"):
-        oxygen_room(Player)
+        oxygen_room(Player,race)
         break
 
     else:

@@ -3,17 +3,17 @@ class Player:
     shields = "damaged"
 
 
-def prompt_room(player):
+def prompt_room(player,race):
     whichroom = input("> ")
     if whichroom == "cockpit":
         if player.shields == "fixed":
-            cockpit_room(player)
+            cockpit_room(player,race)
         else:
             print("There's nothing to do here.")
-            prompt_room(player)
+            prompt_room(player,race)
                 
 
-def cockpit_room(player):
+def cockpit_room(player,race):
     if player.shields == "fixed":
         print('''you enter the shields room and see thats the shields are damaged,
 you need to get them fixed before you can navigate threw the
@@ -33,7 +33,7 @@ panle is bolted shut. what do you do?
                    " the engine room, the oxygen room, and the shield room. which"
                    " room do you check out? ".format(race))
     
-def engine_room(player):
+def engine_room(player,race):
     player.room = "engines"
     if engine == "no":
         print("One of the three engines is damaged very badly. there is a"
@@ -65,7 +65,7 @@ the reason the engine wasn't working was becouse some dabris from the exploshion
 ''')
                     
 
-                    prompt_room(player)
+                    prompt_room(player,race)
                     break
 
                 elif enginechoice == "screwdriver":
@@ -78,7 +78,7 @@ the reason the engine wasn't working was becouse some dabris from the exploshion
                 else:
                     print("That isn't an option!")
 
-def shield_room(player):
+def shield_room(player,race):
     player.room = "shields"
     if player.shields == "damaged":
         print("the shields are damaged, but as soon as you get in the room,"
@@ -88,7 +88,7 @@ def shield_room(player):
     elif player.shields == "repairable":
         print("You fix the shields")
         player.shields =="fixed"
-def oxygen_room(player):
+def oxygen_room(player,race):
     plater.room = "oxygen"
     if oxygen == "no":
         oxygenchoice = input("the oxygen room seams fine, no damage has been done to it."
@@ -119,13 +119,13 @@ def game_over(player):
     while True:
         if finalanswer == "y":
             if player.room == "engines":
-                cockpit_room()
+                cockpit_room(player,race)
                 break
             elif player.room == "shield":
-                cockpit_room()
+                cockpit_room(player,race)
                 break
             elif player.room == "oxygen":
-                cockpit_room()
+                cockpit_room(player,race)
 
         elif finalanswer == "n":
             print("Thanks for playing!")
